@@ -26,7 +26,7 @@ public class DealService {
 
     public void dealValidation(Deal deal) throws Exception {
         if (ObjectUtils.isEmpty(deal.getDealUniqueId()) || ObjectUtils.isEmpty(deal.getDealAmount())
-                || ObjectUtils.isEmpty(deal.getDealTimestamp()) || ObjectUtils.isEmpty(deal.getToCurrencyIsoCode())
+                 || ObjectUtils.isEmpty(deal.getToCurrencyIsoCode())
                 || ObjectUtils.isEmpty(deal.getFromCurrencyIsoCode())) {
             log.error("Missing data fields {}", deal);
             throw new Exception("missing data fields");
