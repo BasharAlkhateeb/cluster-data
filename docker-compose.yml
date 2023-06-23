@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Aa123456@
+      MYSQL_DATABASE: bashar
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql-network
+    volumes:
+      - /data:/var/lib/mysql
+
+  java-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - mysql-network
+
+
+networks:
+  mysql-network:
+    name: mysql-network
